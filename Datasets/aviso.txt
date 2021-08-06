@@ -1,0 +1,7 @@
+ESTA CARPETA CONTIENE LOS DATASETS DEL PROYECTO, PERO DEBIDO A SU TAMAÑO DE ESPACIO
+DECIDIO IGNORARSE EL CONTENIDO.
+
+PUEDES ACCEDER A LOS ARCHIVOS A TRAVES DE LOS SIGUIENTES ENLACES
+
+* Kaggle X-ray covid19 : https://www.kaggle.com/tawsifurrahman/covid19-radiography-database
+* IEEE 8023 x-ray : https://github.com/ieee8023/covid-chestxray-dataset

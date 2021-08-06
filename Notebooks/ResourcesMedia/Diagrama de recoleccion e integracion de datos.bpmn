@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_14kd7pw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="8.7.0">
+  <bpmn:process id="Process_0hpi0rh" isExecutable="false">
+    <bpmn:dataStoreReference id="DataStoreReference_10jmwaw" />
+    <bpmn:dataStoreReference id="DataStoreReference_1hxay94" />
+    <bpmn:dataStoreReference id="DataStoreReference_1b8igkj" />
+    <bpmn:sequenceFlow id="Flow_1mekos8" sourceRef="Activity_00xpyb6" targetRef="Activity_0mdjv08" />
+    <bpmn:dataStoreReference id="DataStoreReference_0nw7a77" />
+    <bpmn:dataStoreReference id="DataStoreReference_1ydekeh" />
+    <bpmn:dataStoreReference id="DataStoreReference_0xb9zsl" />
+    <bpmn:task id="Activity_07mkd9e" name="70% de datos para la etapa de construccion del modelo">
+      <bpmn:incoming>Flow_1tz457v</bpmn:incoming>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_18j9ekm">
+        <bpmn:targetRef>DataStoreReference_1ydekeh</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1myopf0">
+        <bpmn:targetRef>DataStoreReference_0nw7a77</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Activity_1r72x7t" name="30% de datos para la Evaluacion del modelo">
+      <bpmn:incoming>Flow_10o480s</bpmn:incoming>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0g2cnij">
+        <bpmn:targetRef>DataStoreReference_0xb9zsl</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_10o480s" sourceRef="Activity_0mdjv08" targetRef="Activity_1r72x7t" />
+    <bpmn:sequenceFlow id="Flow_1tz457v" sourceRef="Activity_0mdjv08" targetRef="Activity_07mkd9e" />
+    <bpmn:serviceTask id="Activity_00xpyb6" name="Integracion de los datos">
+      <bpmn:outgoing>Flow_1mekos8</bpmn:outgoing>
+      <bpmn:property id="Property_1d72s6y" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_1e0px23">
+        <bpmn:sourceRef>DataStoreReference_1hxay94</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1d72s6y</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_1j73gii">
+        <bpmn:sourceRef>DataStoreReference_1b8igkj</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1d72s6y</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_00lp7wi">
+        <bpmn:sourceRef>DataStoreReference_10jmwaw</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1d72s6y</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:task id="Activity_0mdjv08" name="Division del set de datos con categorias de Neumonia, Normal y COVID19">
+      <bpmn:incoming>Flow_1mekos8</bpmn:incoming>
+      <bpmn:outgoing>Flow_10o480s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1tz457v</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:textAnnotation id="TextAnnotation_16652q1">
+      <bpmn:text>Base datos de Imagenes de Kaggle de neumonia</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1d8tmvi" sourceRef="DataStoreReference_10jmwaw" targetRef="TextAnnotation_16652q1" />
+    <bpmn:textAnnotation id="TextAnnotation_09o636y">
+      <bpmn:text>Base de datos de radiografias positivas BIMCV-COVID19</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0koz3bp" sourceRef="DataStoreReference_1hxay94" targetRef="TextAnnotation_09o636y" />
+    <bpmn:textAnnotation id="TextAnnotation_10x49xc">
+      <bpmn:text>Base de datos ieee8023
+/
+covid-chestxray-dataset</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_053odgp" sourceRef="DataStoreReference_1b8igkj" targetRef="TextAnnotation_10x49xc" />
+    <bpmn:textAnnotation id="TextAnnotation_0a4pj96">
+      <bpmn:text>Los datos de pruebas se usan unicamente durante la evaluacion</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1cjyqid" sourceRef="DataStoreReference_0xb9zsl" targetRef="TextAnnotation_0a4pj96" />
+    <bpmn:textAnnotation id="TextAnnotation_1rbqjfj">
+      <bpmn:text>80% de los resultantes para el entrenamiento</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1gu6ivx" sourceRef="DataStoreReference_1ydekeh" targetRef="TextAnnotation_1rbqjfj" />
+    <bpmn:textAnnotation id="TextAnnotation_0c0m5le">
+      <bpmn:text>20% de datos para la validacion</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0wz552h" sourceRef="DataStoreReference_0nw7a77" targetRef="TextAnnotation_0c0m5le" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0hpi0rh">
+      <bpmndi:BPMNShape id="TextAnnotation_1rbqjfj_di" bpmnElement="TextAnnotation_1rbqjfj">
+        <dc:Bounds x="210" y="250" width="100" height="59" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_10x49xc_di" bpmnElement="TextAnnotation_10x49xc">
+        <dc:Bounds x="940" y="102" width="100" height="96" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_09o636y_di" bpmnElement="TextAnnotation_09o636y">
+        <dc:Bounds x="660" y="50" width="100" height="82" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_16652q1_di" bpmnElement="TextAnnotation_16652q1">
+        <dc:Bounds x="230" y="116" width="100" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0a4pj96_di" bpmnElement="TextAnnotation_0a4pj96">
+        <dc:Bounds x="980" y="322" width="100" height="96" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0c0m5le_di" bpmnElement="TextAnnotation_0c0m5le">
+        <dc:Bounds x="130" y="410" width="100" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1mekos8_di" bpmnElement="Flow_1mekos8">
+        <di:waypoint x="600" y="290" />
+        <di:waypoint x="600" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10o480s_di" bpmnElement="Flow_10o480s">
+        <di:waypoint x="650" y="370" />
+        <di:waypoint x="700" y="370" />
+        <di:waypoint x="700" y="460" />
+        <di:waypoint x="740" y="460" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tz457v_di" bpmnElement="Flow_1tz457v">
+        <di:waypoint x="550" y="370" />
+        <di:waypoint x="510" y="370" />
+        <di:waypoint x="510" y="460" />
+        <di:waypoint x="470" y="460" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DataStoreReference_1hxay94_di" bpmnElement="DataStoreReference_1hxay94">
+        <dc:Bounds x="575" y="103" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1ydekeh_di" bpmnElement="DataStoreReference_1ydekeh">
+        <dc:Bounds x="235" y="345" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07mkd9e_di" bpmnElement="Activity_07mkd9e">
+        <dc:Bounds x="370" y="420" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1r72x7t_di" bpmnElement="Activity_1r72x7t">
+        <dc:Bounds x="740" y="430" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0xb9zsl_di" bpmnElement="DataStoreReference_0xb9zsl">
+        <dc:Bounds x="895" y="435" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_094f9jk_di" bpmnElement="Activity_00xpyb6">
+        <dc:Bounds x="550" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1gltulj_di" bpmnElement="Activity_0mdjv08">
+        <dc:Bounds x="550" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_1b8igkj_di" bpmnElement="DataStoreReference_1b8igkj">
+        <dc:Bounds x="775" y="125" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_10jmwaw_di" bpmnElement="DataStoreReference_10jmwaw">
+        <dc:Bounds x="395" y="115" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0nw7a77_di" bpmnElement="DataStoreReference_0nw7a77">
+        <dc:Bounds x="235" y="475" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1gu6ivx_di" bpmnElement="Association_1gu6ivx">
+        <di:waypoint x="260" y="345" />
+        <di:waypoint x="260" y="309" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_053odgp_di" bpmnElement="Association_053odgp">
+        <di:waypoint x="825" y="146" />
+        <di:waypoint x="940" y="126" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0koz3bp_di" bpmnElement="Association_0koz3bp">
+        <di:waypoint x="625" y="114" />
+        <di:waypoint x="660" y="94" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1d8tmvi_di" bpmnElement="Association_1d8tmvi">
+        <di:waypoint x="395" y="138" />
+        <di:waypoint x="330" y="134" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1cjyqid_di" bpmnElement="Association_1cjyqid">
+        <di:waypoint x="942" y="435" />
+        <di:waypoint x="980" y="393" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0wz552h_di" bpmnElement="Association_0wz552h">
+        <di:waypoint x="235" y="477" />
+        <di:waypoint x="222" y="464" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1e0px23_di" bpmnElement="DataInputAssociation_1e0px23">
+        <di:waypoint x="600" y="153" />
+        <di:waypoint x="600" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1j73gii_di" bpmnElement="DataInputAssociation_1j73gii">
+        <di:waypoint x="775" y="161" />
+        <di:waypoint x="649" y="216" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_00lp7wi_di" bpmnElement="DataInputAssociation_00lp7wi">
+        <di:waypoint x="445" y="154" />
+        <di:waypoint x="551" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0g2cnij_di" bpmnElement="DataOutputAssociation_0g2cnij">
+        <di:waypoint x="840" y="468" />
+        <di:waypoint x="895" y="466" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_18j9ekm_di" bpmnElement="DataOutputAssociation_18j9ekm">
+        <di:waypoint x="370" y="433" />
+        <di:waypoint x="285" y="386" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1myopf0_di" bpmnElement="DataOutputAssociation_1myopf0">
+        <di:waypoint x="370" y="475" />
+        <di:waypoint x="285" y="499" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
