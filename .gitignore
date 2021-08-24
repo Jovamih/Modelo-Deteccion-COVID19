@@ -1,7 +1,8 @@
 #Excluimos el contenido de  la carpeta de imagenes DATASET
 Datasets/*
 !Datasets/aviso.txt
-Something/
+Something/*
+Models/*
 #Ignoramos el contenido de PNGQUANT un excelente modelo de compresion de imagenes PNG
 Notebooks/pngquant/
 #ignoramos la carpeta de configuracion de VSCODE
@@ -11,6 +12,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+*.h5
 # C extensions
 *.so
 
