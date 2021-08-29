@@ -1,7 +1,7 @@
 # Modelo para la detección de COVID-19 en base a radiografias de Rayos-X
 
-* [**Paper completo del proyecto. Aquí 👀📚**](www.google.com)
-
+* [**Paper completo del proyecto. Aquí 👀📚**](Informes/INFORME_FINAL.pdf)
+* Modelo en produccion: [Click Here!](https://share.streamlit.io/jovamih/covid19detectorapp/main/app.py)
 
 ![alt radiografia_img](Notebooks/imagen_sistema_esquema.png)
 
@@ -26,8 +26,8 @@ Estas fueron:
 
 ## Aplicacion de CNN: Redes Neuronales Convolucionales
 
-* Se aplicó CNN junto con la arquitectura MobileNetV2 de Google
-![Arquitectura del Primer Prototipo de Red](model_final.png)
+* Se aplicó CNN junto con la arquitectura DenseNet169 de Google
+![Arquitectura del Primer Prototipo de Red](arquitectura_final.png)
 
 ### El autor:
 * Johan Valerio Mitma, 20 años UNMSM- Perú
